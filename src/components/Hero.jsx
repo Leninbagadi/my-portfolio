@@ -1,9 +1,45 @@
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+
 function Hero() {
+  const heroRef = useRef(null);
+
+  useEffect(() => {
+    const elements = heroRef.current.querySelectorAll('.hero-animate');
+
+    gsap.fromTo(
+      elements,
+      {
+        y: 40,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.15,
+        ease: 'power3.out',
+      }
+    );
+
+    gsap.to('.hero-glow', {
+      scale: 1.15,
+      opacity: 0.35,
+      duration: 4,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut',
+    });
+  }, []);
+
   return (
-    <section className="min-vh-100 bg-black text-white position-relative overflow-hidden d-flex align-items-center">
+    <section
+      ref={heroRef}
+      className="min-vh-100 bg-black text-white position-relative overflow-hidden d-flex align-items-center"
+    >
       {/* Background glow */}
       <div
-        className="position-absolute top-50 start-50 translate-middle rounded-circle opacity-25"
+        className="hero-glow position-absolute top-50 start-50 translate-middle rounded-circle opacity-25"
         style={{
           width: '500px',
           height: '500px',
@@ -17,20 +53,22 @@ function Hero() {
       <div className="container-fluid px-4 px-lg-5 position-relative z-1">
         <div className="row">
           <div className="col-12 col-lg-10">
-            <p className="text-uppercase small text-secondary mb-4 tracking-wide">
+            <p className="hero-animate text-uppercase small text-secondary mb-4 tracking-wide">
               Full Stack Developer · React · Java
             </p>
 
             <h1
-              className="display-1 fw-semibold lh-1 mb-4"
+              className="hero-animate display-1 fw-semibold lh-1 mb-4"
               style={{ maxWidth: '1100px' }}
             >
               I BUILD DIGITAL
               <br />
-              <span className="text-secondary">PRODUCTS & EXPERIENCES.</span>
+              <span className="text-secondary">
+                PRODUCTS & EXPERIENCES.
+              </span>
             </h1>
 
-            <div className="d-flex flex-column flex-md-row gap-3 align-items-md-center">
+            <div className="hero-animate d-flex flex-column flex-md-row gap-3 align-items-md-center">
               <a
                 href="#work"
                 className="btn btn-light rounded-pill px-4 py-3"
@@ -49,7 +87,7 @@ function Hero() {
         </div>
 
         {/* Bottom information */}
-        <div className="position-absolute bottom-0 start-0 w-100 pb-4">
+        <div className="hero-animate position-absolute bottom-0 start-0 w-100 pb-4">
           <div className="d-flex flex-column flex-md-row justify-content-between gap-2 small text-secondary">
             <span>Based in Hyderabad, India</span>
             <span>Available for selected projects</span>
