@@ -1,9 +1,14 @@
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+
 function App() {
   return (
-    <main>
-      <h1>Lenin Sivamani</h1>
-      <p>Portfolio website</p>
-    </main>
+    <>
+      <Navbar />
+      <main>
+        <Hero />
+      </main>
+    </>
   );
 }
 
