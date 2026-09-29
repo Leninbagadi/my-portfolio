@@ -1,119 +1,168 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+const services = [
+  {
+    number: '01',
+    title: 'Frontend Development',
+    description:
+      'Responsive and interactive interfaces built with React, JavaScript, HTML and CSS.',
+  },
+  {
+    number: '02',
+    title: 'Full-Stack Development',
+    description:
+      'Complete web applications connecting modern frontend experiences with reliable backend systems.',
+  },
+  {
+    number: '03',
+    title: 'Business Applications',
+    description:
+      'Practical internal applications designed around real business workflows and requirements.',
+  },
+  {
+    number: '04',
+    title: 'Dashboards & Systems',
+    description:
+      'Role-based dashboards and management systems for organizing data, tasks and operations.',
+  },
+];
+
 function ServicesIntro() {
-    const sectionRef = useRef(null);
+  const sectionRef = useRef(null);
 
-useEffect(() => {
-  gsap.registerPlugin(ScrollTrigger);
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
 
-  const items = sectionRef.current.querySelectorAll('.service-item');
+    const items = sectionRef.current.querySelectorAll('.service-item');
 
-  gsap.fromTo(
-    items,
-    {
-      y: 50,
-      opacity: 0,
-    },
-    {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top 70%',
-      },
-    }
-  );
-}, []);
-  const services = [
-    {
-      number: '01',
-      title: 'Frontend Development',
-      text: 'Modern, responsive interfaces built with React and focused on clear user experiences.',
-    },
-    {
-      number: '02',
-      title: 'Full-Stack Development',
-      text: 'Complete web applications connecting React frontends with Java and Spring Boot backends.',
-    },
-    {
-      number: '03',
-      title: 'Business Applications',
-      text: 'Internal systems and workflow applications designed around real business requirements.',
-    },
-    {
-      number: '04',
-      title: 'Dashboards & Systems',
-      text: 'Role-based dashboards, management systems and data-driven interfaces.',
-    },
-  ];
+    items.forEach((item) => {
+      const line = item.querySelector('.service-line');
+      const number = item.querySelector('.service-number');
+
+      gsap.fromTo(
+        item,
+        {
+          y: 60,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 85%',
+          },
+        }
+      );
+
+      gsap.fromTo(
+        line,
+        {
+          scaleX: 0,
+        },
+        {
+          scaleX: 1,
+          duration: 0.9,
+          ease: 'power3.out',
+          transformOrigin: 'left center',
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 85%',
+          },
+        }
+      );
+
+      item.addEventListener('mouseenter', () => {
+        gsap.to(number, {
+          x: 10,
+          duration: 0.3,
+          ease: 'power2.out',
+        });
+      });
+
+      item.addEventListener('mouseleave', () => {
+        gsap.to(number, {
+          x: 0,
+          duration: 0.3,
+          ease: 'power2.out',
+        });
+      });
+    });
+  }, []);
 
   return (
     <section
-  ref={sectionRef}
-  id="services"
-  className="bg-light text-dark py-5"
->
+      ref={sectionRef}
+      id="services"
+      className="bg-light text-dark py-5"
+    >
       <div className="container-fluid px-4 px-lg-5 py-5">
-        {/* Introduction */}
-        <div className="row py-lg-5 mb-5">
-          <div className="col-12 col-lg-4 mb-5 mb-lg-0">
-            <p className="text-uppercase small text-secondary mb-3">
-              What I Build
+
+        <div className="row py-5">
+
+          <div className="col-12 col-lg-5 mb-5 mb-lg-0">
+            <p className="text-uppercase small text-secondary mb-4">
+              What I Do
             </p>
 
-            <span className="display-6 fw-semibold">01 —</span>
-          </div>
-
-          <div className="col-12 col-lg-8">
-            <h2
-              className="display-3 fw-semibold lh-1 mb-4"
-              style={{ maxWidth: '900px' }}
-            >
-              Digital products that solve real problems.
+            <h2 className="display-3 fw-semibold lh-1 mb-4">
+              Digital products
+              <br />
+              that solve real
+              <br />
+              problems.
             </h2>
 
             <p
-              className="fs-5 text-secondary"
-              style={{ maxWidth: '700px' }}
+              className="fs-5 text-secondary lh-lg"
+              style={{ maxWidth: '520px' }}
             >
-              I build modern web applications, business systems and
-              interactive frontend experiences using React, Java and
-              Spring Boot.
+              From responsive interfaces to business applications, I build
+              practical digital experiences around real requirements.
             </p>
           </div>
-        </div>
 
-        {/* Services */}
-        <div className="row border-top border-dark-subtle">
-          {services.map((service) => (
-            <div
-              key={service.number}
-              className="service-item col-12 col-md-6 border-bottom border-dark-subtle p-4 p-lg-5"
-            >
-              <div className="d-flex justify-content-between mb-5">
-                <span className="small text-secondary">
-                  {service.number}
-                </span>
+          <div className="col-12 col-lg-6 offset-lg-1">
 
-                <span className="fs-4">↗</span>
-              </div>
-
-              <h3 className="h2 fw-semibold mb-3">
-                {service.title}
-              </h3>
-
-              <p
-                className="text-secondary mb-0"
-                style={{ maxWidth: '500px' }}
+            {services.map((service) => (
+              <article
+                key={service.number}
+                className="service-item position-relative py-4"
               >
-                {service.text}
-              </p>
-            </div>
-          ))}
+                <div
+                  className="service-line position-absolute top-0 start-0 w-100 border-top border-dark border-opacity-25"
+                />
+
+                <div className="row g-4 align-items-start">
+
+                  <div className="col-2">
+                    <span className="service-number small text-secondary d-inline-block">
+                      {service.number}
+                    </span>
+                  </div>
+
+                  <div className="col-10 col-md-5">
+                    <h3 className="h2 mb-0">
+                      {service.title}
+                    </h3>
+                  </div>
+
+                  <div className="col-12 col-md-5">
+                    <p className="text-secondary lh-lg mb-0">
+                      {service.description}
+                    </p>
+                  </div>
+
+                </div>
+              </article>
+            ))}
+
+          </div>
+
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ProjectVisual from './ProjectVisual';
 
 function ProjectShowcase() {
   const sectionRef = useRef(null);
@@ -114,99 +115,9 @@ function ProjectShowcase() {
             </div>
           </div>
 
-          {/* Visual */}
           <div className="showcase-visual col-12 col-lg-7">
-            <div
-              className="bg-black rounded-4 p-3 p-md-4 shadow-lg"
-              style={{ minHeight: '520px' }}
-            >
-              <div className="d-flex align-items-center gap-2 mb-4">
-                <span
-                  className="rounded-circle bg-secondary"
-                  style={{ width: '8px', height: '8px' }}
-                />
-                <span
-                  className="rounded-circle bg-secondary"
-                  style={{ width: '8px', height: '8px' }}
-                />
-                <span
-                  className="rounded-circle bg-secondary"
-                  style={{ width: '8px', height: '8px' }}
-                />
-              </div>
-
-              <div className="bg-dark rounded-3 p-4 h-100">
-                <div className="row g-3 mb-4">
-                  <div className="col-6 col-md-3">
-                    <div className="bg-secondary bg-opacity-25 rounded-3 p-3">
-                      <small className="text-secondary">
-                        Present
-                      </small>
-                      <h3 className="text-white mt-2 mb-0">
-                        128
-                      </h3>
-                    </div>
-                  </div>
-
-                  <div className="col-6 col-md-3">
-                    <div className="bg-secondary bg-opacity-25 rounded-3 p-3">
-                      <small className="text-secondary">
-                        Absent
-                      </small>
-                      <h3 className="text-white mt-2 mb-0">
-                        12
-                      </h3>
-                    </div>
-                  </div>
-
-                  <div className="col-6 col-md-3">
-                    <div className="bg-secondary bg-opacity-25 rounded-3 p-3">
-                      <small className="text-secondary">
-                        Late
-                      </small>
-                      <h3 className="text-white mt-2 mb-0">
-                        08
-                      </h3>
-                    </div>
-                  </div>
-
-                  <div className="col-6 col-md-3">
-                    <div className="bg-secondary bg-opacity-25 rounded-3 p-3">
-                      <small className="text-secondary">
-                        OT
-                      </small>
-                      <h3 className="text-white mt-2 mb-0">
-                        24
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-secondary bg-opacity-25 rounded-3 p-4">
-                  <div className="d-flex justify-content-between mb-4">
-                    <span className="text-white">
-                      Attendance Overview
-                    </span>
-                    <span className="text-secondary small">
-                      Dashboard
-                    </span>
-                  </div>
-
-                  <div className="d-flex align-items-end gap-2" style={{ height: '180px' }}>
-                    {[45, 75, 55, 90, 65, 82, 70, 95].map(
-                      (height, index) => (
-                        <div
-                          key={index}
-                          className="bg-light rounded-top flex-grow-1"
-                          style={{ height: `${height}%` }}
-                        />
-                      )
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+  <ProjectVisual type="attendance" />
+</div>
 
         </div>
       </div>

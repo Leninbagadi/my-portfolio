@@ -14,4 +14,18 @@ body {
   font-family: Arial, sans-serif;
   background: #ffffff;
   color: #111111;
+  overflow-x: hidden;
+}
+
+a {
+  transition: opacity 0.3s ease;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+::selection {
+  background: #111111;
+  color: #ffffff;
 }
