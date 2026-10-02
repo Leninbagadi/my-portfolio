@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import HeroScene from './HeroScene';
 
 function Hero() {
   const heroRef = useRef(null);
@@ -37,6 +38,18 @@ function Hero() {
       ref={heroRef}
       className="min-vh-100 bg-black text-white position-relative overflow-hidden d-flex align-items-center"
     >
+ <div
+  className="position-absolute top-0 start-0"
+  style={{
+    width: '100%',
+    height: '100%',
+    zIndex: 0,
+    opacity: 0.9,
+    pointerEvents: 'none',
+  }}
+>
+  <HeroScene />
+</div>
       {/* Background glow */}
       <div
         className="hero-glow position-absolute top-50 start-50 translate-middle rounded-circle opacity-25"
