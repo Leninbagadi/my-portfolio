@@ -36,7 +36,7 @@ function Hero() {
   return (
     <section
       ref={heroRef}
-      className="min-vh-100 bg-black text-white position-relative overflow-hidden d-flex align-items-center"
+     className="min-vh-100 bg-black text-white position-relative overflow-hidden d-flex align-items-center"
     >
  <div
   className="position-absolute top-0 start-0"
@@ -63,7 +63,10 @@ function Hero() {
       />
 
       {/* Main content */}
-      <div className="container-fluid px-4 px-lg-5 position-relative z-1">
+<div
+  className="container-fluid px-4 px-lg-5 position-relative z-1 h-100 d-flex align-items-center"
+  style={{ paddingBottom: '120px' }}
+>
         <div className="row">
           <div className="col-12 col-lg-10">
             <p className="hero-animate text-uppercase small text-secondary mb-4 tracking-wide">
