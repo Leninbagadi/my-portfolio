@@ -50,6 +50,19 @@ function Hero() {
 >
   <HeroScene />
 </div>
+<div
+  className="position-absolute top-0 start-0 w-100 h-100"
+  style={{
+    zIndex: 0,
+    pointerEvents: 'none',
+    opacity: 0.045,
+    backgroundImage: `
+      linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)
+    `,
+    backgroundSize: '80px 80px',
+  }}
+/>
       {/* Background glow */}
       <div
         className="hero-glow position-absolute top-50 start-50 translate-middle rounded-circle opacity-25"
